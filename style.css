@@ -1,5 +1,4 @@
 /* -------  General Styles ------- */
-
 body {
   font-family: "Lato", sans-serif;
 }
@@ -31,14 +30,17 @@ section.alternate-background {
 }
 
 main img {
-  width: 100px;
+  max-width: 100%;
+}
+.item img {
+  width: 100%;
 }
 
 /* ---  Groups & Items --- */
-
 .group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-bottom: 100px;
 }
 
 .item {
@@ -48,10 +50,10 @@ main img {
 
 .item-double {
   flex: 2;
+  margin: 10px;
 }
 
 /* -------  Navigation ------- */
-
 header {
   background-color: #ff385c;
   padding: 20px 20px 0 20px;
@@ -64,14 +66,43 @@ header {
   color: #fff;
 }
 
+header nav {
+  /* Changes the display property from its default to `flex`. */
+  display: flex;
+  /* Centers an element defined as `display: flex`. */
+  justify-content: center;
+}
+
+header nav ul {
+  /* Changes the display property from its default to `flex`. */
+  display: flex;
+  /*
+    You want the navigation to display in a single row. This is
+    the default value for `display: flex`, so you don't need
+    to define its `flex-direction` in this case.
+  */
+  /*
+    Removes the default padding to the left of the
+    unordered list.
+  */
+  padding-left: 0;
+  /*
+    Removes the bullet points from the list items within the
+    unordered list.
+  */
+  list-style: none;
+}
+
 header nav ul li {
   list-style-type: none;
+  margin: 0 20px 0 0;
 }
 
 header nav ul li a {
   color: #fff;
   text-decoration: none;
-  padding: 0 20px 0 0;
+  /* padding: 0 20px 0 0; */
+  margin-right: 0;
 }
 
 header nav ul li a:hover {
@@ -83,10 +114,15 @@ header nav ul li a:hover {
 form {
   border: 2px solid #ff385c;
   padding: 10px;
+
 }
 
 form label {
   font-weight: bold;
+}
+form div {
+  display: flex;
+  justify-content: space-between;
 }
 
 form select,
@@ -105,7 +141,6 @@ form button {
 }
 
 /* -------  Footer ------- */
-
 footer {
   background-color: #ff385c;
 }
@@ -117,3 +152,63 @@ footer p {
 }
 
 /* -------  Media Query ------- */
+@media (min-width: 480px) {
+
+  /* ------- Responsive Header ------ */
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* ------- Responsive Form ------ */
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  form select,
+  form input {
+    margin-bottom: 0;
+    width: 180px;
+}
+
+  form div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 50px;
+  }
+
+  /* ------- Responsive Groups & Items ------ */
+
+  .group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #ideas .group {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  #ideas div {
+    display: flex;
+    flex-basis: calc(50% - 40px);
+    justify-content: center;
+    flex-direction: column;
+  }
+
+}
